@@ -41,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // CEngine 초기화 설정
-    ISFAILED(INST(CEngine)->init(hWnd, Vec2(1280, 768)), L"CEngine 초기화 설정");
+    IF_FAILED(INST(CEngine)->init(hWnd, Vec2(1280, 768)), L"CEngine 초기화 설정");
 
     // PeekMessage를 통해서 메세지 루프가 없을 경우에도 tick을 수행할 수 있도록 해줌.
     while (true)

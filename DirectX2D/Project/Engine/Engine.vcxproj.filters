@@ -63,6 +63,9 @@
     <ClInclude Include="SimpleMath.h">
       <Filter>99. Module</Filter>
     </ClInclude>
+    <ClInclude Include="CDevice.h">
+      <Filter>03. Device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="CEngine.cpp">
       <Filter>02. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CDevice.cpp">
+      <Filter>03. Device</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
