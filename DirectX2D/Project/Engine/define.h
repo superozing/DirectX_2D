@@ -21,11 +21,12 @@ typedef void(*FUNC_TYPE)(void);
 
 #define INST(classtype) classtype::GetInst()
 
-#define ISFAILED(Func, LstrFuncName) if (FAILED(Func))\
+#define IF_FAILED(Func, LstrFuncName) if (FAILED(Func))\
 									{\
 											wstring strFuncName = LstrFuncName;\
 											strFuncName += L" ½ÇÆÐ";\
 											MessageBox(nullptr, strFuncName.c_str(), strFuncName.c_str(), MB_OK);\
+											return E_FAIL;\
 									}\
 
 
