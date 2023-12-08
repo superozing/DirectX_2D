@@ -5,22 +5,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Default">
+    <Filter Include="99. Default">
       <UniqueIdentifier>{70dd806a-c2b0-40d3-a372-8f7193e577f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

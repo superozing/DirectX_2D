@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99. Default">
+      <UniqueIdentifier>{343db463-b682-4f25-9206-c98849e00605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Header">
+      <UniqueIdentifier>{118c03d8-008e-41b9-bd8d-fafae420f417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Engine">
+      <UniqueIdentifier>{cf473f1c-c4dc-4caa-987e-638dade35301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Device">
+      <UniqueIdentifier>{deea725c-5660-482b-811a-9e2dab0c3eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager">
+      <UniqueIdentifier>{32063128-2dfa-49db-bd5d-955fc43510d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Level">
+      <UniqueIdentifier>{7ef02218-9cbb-42e0-9378-58b0de5b7aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset">
+      <UniqueIdentifier>{f16cf7cc-c9eb-4c37-bb76-c55201b25ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. GameObject">
+      <UniqueIdentifier>{3c304369-eec3-4037-b21a-c0c57710731d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component">
+      <UniqueIdentifier>{c76d69ec-58c0-41c9-aa1f-7ff6f7a700a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Entity">
+      <UniqueIdentifier>{656dca70-bf99-4a42-9ecf-c2ab8afb2310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Module">
+      <UniqueIdentifier>{ff0c82ec-7f40-497c-9f2c-4db77369fb2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. ShaderCode">
+      <UniqueIdentifier>{d162b4d5-ec18-4545-a5a7-24ce6582ac53}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>99. Default</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp">
+      <Filter>99. Default</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>99. Default</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
