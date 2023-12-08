@@ -57,7 +57,12 @@
     <ClInclude Include="struct.h">
       <Filter>01. Header</Filter>
     </ClInclude>
-    <ClInclude Include="CEngine.h" />
+    <ClInclude Include="CEngine.h">
+      <Filter>02. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMath.h">
+      <Filter>99. Module</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -66,6 +71,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>99. Default</Filter>
     </ClCompile>
-    <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="CEngine.cpp">
+      <Filter>02. Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleMath.inl">
+      <Filter>99. Module</Filter>
+    </None>
   </ItemGroup>
 </Project>

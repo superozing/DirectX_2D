@@ -1,6 +1,16 @@
 ﻿#include "framework.h"
 #include "Client.h"
 
+#include <Engine\global.h>
+#include <Engine\CEngine.h>
+
+#ifdef _DEBUG
+#pragma comment(lib, "Engine\\Engine_d.lib")
+#else
+#pragma comment(lib, "Engine\\Engine.lib")
+#endif
+
+
 constexpr auto WINDOWNAME = L"MyWindow";
 
 // 전역 변수:
@@ -30,6 +40,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
     MSG msg;
 
+    // CEngine 초기화 설정
+    ISFAILED(INST(CEngine)->init(hWnd, Vec2(1280, 768)), L"CEngine 초기화 설정");
+
     // PeekMessage를 통해서 메세지 루프가 없을 경우에도 tick을 수행할 수 있도록 해줌.
     while (true)
     {
@@ -52,7 +65,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         // 윈도우 메세지가 없을 경우 progress(tick) 수행
         else
         {
-            //CEngine::GetInst()->progress();
+            CEngine::GetInst()->progress();
         }
     }
 

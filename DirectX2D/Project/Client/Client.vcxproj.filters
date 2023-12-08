@@ -37,7 +37,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>99. Default</Filter>
     </ClCompile>
   </ItemGroup>
