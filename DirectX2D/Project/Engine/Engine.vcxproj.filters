@@ -45,6 +45,19 @@
     <ClInclude Include="pch.h">
       <Filter>99. Default</Filter>
     </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -53,5 +66,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>99. Default</Filter>
     </ClCompile>
+    <ClCompile Include="CEngine.cpp" />
   </ItemGroup>
 </Project>
