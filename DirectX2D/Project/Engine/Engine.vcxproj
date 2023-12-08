@@ -156,6 +156,7 @@ call EngineCopy.bat</Command>
   <ItemGroup>
     <ClInclude Include="CDevice.h" />
     <ClInclude Include="CEngine.h" />
+    <ClInclude Include="CEntity.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="global.h" />
@@ -167,6 +168,7 @@ call EngineCopy.bat</Command>
   <ItemGroup>
     <ClCompile Include="CDevice.cpp" />
     <ClCompile Include="CEngine.cpp" />
+    <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

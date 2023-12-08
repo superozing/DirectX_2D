@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="99. Default">
-      <UniqueIdentifier>{343db463-b682-4f25-9206-c98849e00605}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Header">
       <UniqueIdentifier>{118c03d8-008e-41b9-bd8d-fafae420f417}</UniqueIdentifier>
     </Filter>
@@ -28,22 +25,25 @@
     <Filter Include="08. Component">
       <UniqueIdentifier>{c76d69ec-58c0-41c9-aa1f-7ff6f7a700a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99. Entity">
+    <Filter Include="00. Default">
+      <UniqueIdentifier>{343db463-b682-4f25-9206-c98849e00605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. Entity">
       <UniqueIdentifier>{656dca70-bf99-4a42-9ecf-c2ab8afb2310}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99. Module">
+    <Filter Include="00. Module">
       <UniqueIdentifier>{ff0c82ec-7f40-497c-9f2c-4db77369fb2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99. ShaderCode">
+    <Filter Include="00. ShaderCode">
       <UniqueIdentifier>{d162b4d5-ec18-4545-a5a7-24ce6582ac53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>99. Default</Filter>
+      <Filter>00. Default</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>99. Default</Filter>
+      <Filter>00. Default</Filter>
     </ClInclude>
     <ClInclude Include="define.h">
       <Filter>01. Header</Filter>
@@ -61,18 +61,21 @@
       <Filter>02. Engine</Filter>
     </ClInclude>
     <ClInclude Include="SimpleMath.h">
-      <Filter>99. Module</Filter>
+      <Filter>00. Module</Filter>
     </ClInclude>
     <ClInclude Include="CDevice.h">
       <Filter>03. Device</Filter>
     </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>00. Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
-      <Filter>99. Default</Filter>
+      <Filter>00. Default</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>99. Default</Filter>
+      <Filter>00. Default</Filter>
     </ClCompile>
     <ClCompile Include="CEngine.cpp">
       <Filter>02. Engine</Filter>
@@ -80,10 +83,13 @@
     <ClCompile Include="CDevice.cpp">
       <Filter>03. Device</Filter>
     </ClCompile>
+    <ClCompile Include="CEntity.cpp">
+      <Filter>00. Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
-      <Filter>99. Module</Filter>
+      <Filter>00. Module</Filter>
     </None>
   </ItemGroup>
 </Project>
