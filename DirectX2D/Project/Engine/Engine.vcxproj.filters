@@ -37,6 +37,15 @@
     <Filter Include="00. ShaderCode">
       <UniqueIdentifier>{d162b4d5-ec18-4545-a5a7-24ce6582ac53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\KeyMgr">
+      <UniqueIdentifier>{8d64bb3b-efce-46eb-8ca4-b5b7640f958b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\PathMgr">
+      <UniqueIdentifier>{fb521cb5-fe7f-4aa4-b579-ca556269094a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\TimeMgr">
+      <UniqueIdentifier>{ce31b20a-76b2-4c03-9f1d-91389f94e25e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -73,6 +82,15 @@
       <Filter>05. Level</Filter>
     </ClInclude>
     <ClInclude Include="Test.h" />
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>04. Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>04. Manager\PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>04. Manager\TimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -94,6 +112,15 @@
       <Filter>05. Level</Filter>
     </ClCompile>
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>04. Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>04. Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>04. Manager\TimeMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
