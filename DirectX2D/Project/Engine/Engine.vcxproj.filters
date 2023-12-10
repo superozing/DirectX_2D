@@ -52,6 +52,12 @@
     <Filter Include="06. Asset\Shader">
       <UniqueIdentifier>{8ec7f9ec-b5a9-4044-8820-364d699f835b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06. Asset\Shader\GraphicsShader">
+      <UniqueIdentifier>{35bb787f-aa3d-4e52-9424-e57a38eac8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset\Shader\ComputeShader">
+      <UniqueIdentifier>{27600ec5-658c-42fc-ac7c-b26027962b85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -100,7 +106,15 @@
     <ClInclude Include="CAsset.h">
       <Filter>06. Asset</Filter>
     </ClInclude>
-    <ClInclude Include="CMesh.h" />
+    <ClInclude Include="CMesh.h">
+      <Filter>06. Asset\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="CShader.h">
+      <Filter>06. Asset\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="CGraphicsShader.h">
+      <Filter>06. Asset\Shader\GraphicsShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -134,7 +148,15 @@
     <ClCompile Include="CAsset.cpp">
       <Filter>06. Asset</Filter>
     </ClCompile>
-    <ClCompile Include="CMesh.cpp" />
+    <ClCompile Include="CMesh.cpp">
+      <Filter>06. Asset\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="CShader.cpp">
+      <Filter>06. Asset\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="CGraphicsShader.cpp">
+      <Filter>06. Asset\Shader\GraphicsShader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
