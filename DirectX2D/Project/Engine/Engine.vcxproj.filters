@@ -46,6 +46,12 @@
     <Filter Include="04. Manager\TimeMgr">
       <UniqueIdentifier>{ce31b20a-76b2-4c03-9f1d-91389f94e25e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06. Asset\Mesh">
+      <UniqueIdentifier>{18275510-496f-4cfb-86c6-1380819b66bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset\Shader">
+      <UniqueIdentifier>{8ec7f9ec-b5a9-4044-8820-364d699f835b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -91,6 +97,10 @@
     <ClInclude Include="CTimeMgr.h">
       <Filter>04. Manager\TimeMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CAsset.h">
+      <Filter>06. Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -121,6 +131,10 @@
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>04. Manager\TimeMgr</Filter>
     </ClCompile>
+    <ClCompile Include="CAsset.cpp">
+      <Filter>06. Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

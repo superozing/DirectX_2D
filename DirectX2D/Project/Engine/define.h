@@ -29,6 +29,11 @@ typedef void(*FUNC_TYPE)(void);
 											return E_FAIL;\
 									}\
 
+#define DELETE(deletePtr) if (nullptr != deletePtr) { delete deletePtr; }
+
+#define DEVICE  CDevice::GetInst()->GetDevice()
+#define CONTEXT CDevice::GetInst()->GetContext()
+
 
 
 #pragma endregion
@@ -38,8 +43,16 @@ typedef void(*FUNC_TYPE)(void);
 
 #pragma endregion
 #pragma region _	enum class
-
-
+enum class ASSET_TYPE
+{
+	MESH,
+	MESHDATA,
+	TEXTURE,
+	MATERIAL,
+	SOUND,
+	COMPUTE_SHADER,
+	GRAPHICS_SHADER,
+};
 
 #pragma endregion
 
