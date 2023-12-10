@@ -69,6 +69,7 @@
     <ClInclude Include="CEntity.h">
       <Filter>00. Entity</Filter>
     </ClInclude>
+    <ClInclude Include="CLevel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -86,6 +87,7 @@
     <ClCompile Include="CEntity.cpp">
       <Filter>00. Entity</Filter>
     </ClCompile>
+    <ClCompile Include="CLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
