@@ -69,7 +69,10 @@
     <ClInclude Include="CEntity.h">
       <Filter>00. Entity</Filter>
     </ClInclude>
-    <ClInclude Include="CLevel.h" />
+    <ClInclude Include="CLevel.h">
+      <Filter>05. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -87,11 +90,19 @@
     <ClCompile Include="CEntity.cpp">
       <Filter>00. Entity</Filter>
     </ClCompile>
-    <ClCompile Include="CLevel.cpp" />
+    <ClCompile Include="CLevel.cpp">
+      <Filter>05. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
       <Filter>00. Module</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="std2d.fx">
+      <Filter>00. ShaderCode</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
