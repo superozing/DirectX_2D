@@ -396,4 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-DirectX2D/External/Include/Engine/*
+DirectX2D/External/*
+
+
