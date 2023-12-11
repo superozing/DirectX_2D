@@ -17,8 +17,8 @@ CMesh::CMesh()
 
 CMesh::~CMesh()
 {
-    DELETE(m_VtxSysMem);
-    DELETE(m_IdxSysMem);
+    IF_DELETE(m_VtxSysMem);
+    IF_DELETE(m_IdxSysMem);
 }
 
 int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)

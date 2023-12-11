@@ -7,7 +7,6 @@ typedef Vector2 Vec2;
 typedef Vector3 Vec3;
 typedef Vector4 Vec4;
 
-typedef void(*FUNC_TYPE)(void);
 
 #pragma endregion
 #pragma region _	Define - Function
@@ -20,6 +19,8 @@ typedef void(*FUNC_TYPE)(void);
 							friend class CSingleton<classtype>;
 
 #define INST(classtype) classtype::GetInst()
+#define DEVICE  INST(CDevice)->GetDevice()
+#define CONTEXT INST(CDevice)->GetContext()
 
 #define IF_FAILED(Func, LstrFuncName) if (FAILED(Func))\
 									{\
@@ -29,12 +30,15 @@ typedef void(*FUNC_TYPE)(void);
 											return E_FAIL;\
 									}\
 
-#define DELETE(deletePtr) if (nullptr != deletePtr) { delete deletePtr; }
+#define IF_DELETE(deletePtr) if (nullptr != deletePtr) { delete deletePtr; }
 
-#define DEVICE  CDevice::GetInst()->GetDevice()
-#define CONTEXT CDevice::GetInst()->GetContext()
+#define DT					INST(CTimeMgr)->GetDeltaTime()
 
-
+#define KEY_CHECK(Key, State) INST(CKeyMgr)->GetKeyState(Key) == State
+#define KEY_TAP(Key) KEY_CHECK(Key, TAP)
+#define KEY_PRESSED(Key) KEY_CHECK(Key, PRESSED)
+#define KEY_RELEASED(Key) KEY_CHECK(Key, RELEASED)
+#define KEY_NONE(Key) KEY_CHECK(Key, NONE)
 
 #pragma endregion
 #pragma region _	Define - constexpr

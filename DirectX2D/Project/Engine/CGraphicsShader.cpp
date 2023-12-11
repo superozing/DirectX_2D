@@ -15,11 +15,14 @@ CGraphicsShader::~CGraphicsShader()
 {
 }
 
-int CGraphicsShader::CompileStd2D(const wstring& _strRelativePath, const string& _strFuncName)
+int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const string& _strFuncName)
 {
+	// Vertex Shader
+	// HLSL VS_Std2D 함수 컴파일
 	wstring conPath = CPathMgr::GetContentPath();
 	wstring filePath = conPath + _strRelativePath; // 컨텐츠 경로 + 상대 경로
 
+	// VSBlob 채우기
 	if (FAILED(D3DCompileFromFile(filePath.c_str(), nullptr
 		, D3D_COMPILE_STANDARD_FILE_INCLUDE
 		, _strFuncName.c_str(), "vs_5_0", D3DCOMPILE_DEBUG, 0
@@ -31,15 +34,9 @@ int CGraphicsShader::CompileStd2D(const wstring& _strRelativePath, const string&
 			string captionName = "[CGraphicsShader.cpp]" + _strFuncName + "컴파일 실패";
 			MessageBoxA(nullptr, pErrMsg, captionName.c_str(), MB_OK);
 		}
+
 		return E_FAIL;
 	}
-}
-
-int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const string& _strFuncName)
-{
-	// Vertex Shader
-	// HLSL VS_Std2D 함수 컴파일
-	IF_FAILED(CompileStd2D(_strRelativePath, _strFuncName), L"CreateVertexShader ");
 
 	// VertexShader 생성
 	DEVICE->CreateVertexShader(m_VSBlob->GetBufferPointer()
@@ -113,8 +110,23 @@ int CGraphicsShader::CreatePixelShader(const wstring& _strRelativePath, const st
 {
 	// Pixel Shader
 	// HLSL PS_Std2D 함수 컴파일
-	IF_FAILED(CompileStd2D(_strRelativePath, _strFuncName), L"CreatePixelShader ");
+	wstring conPath = CPathMgr::GetContentPath();
+	wstring filePath = conPath + _strRelativePath; // 컨텐츠 경로 + 상대 경로
 
+	if (FAILED(D3DCompileFromFile(filePath.c_str(), nullptr
+		, D3D_COMPILE_STANDARD_FILE_INCLUDE
+		, _strFuncName.c_str(), "ps_5_0", D3DCOMPILE_DEBUG, 0
+		, m_PSBlob.GetAddressOf(), m_ErrBlob.GetAddressOf())))
+	{
+		if (nullptr != m_ErrBlob) // 오류가 날 경우 에러 블롭에 오류 정보를 채워줌.
+		{
+			char* pErrMsg = (char*)m_ErrBlob->GetBufferPointer();
+			string captionName = "[CGraphicsShader.cpp]" + _strFuncName + "컴파일 실패";
+			MessageBoxA(nullptr, pErrMsg, captionName.c_str(), MB_OK);
+		}
+
+		return E_FAIL;
+	}
 	// PixelShader 생성
 	DEVICE->CreatePixelShader(m_PSBlob->GetBufferPointer()
 		, m_PSBlob->GetBufferSize(), nullptr

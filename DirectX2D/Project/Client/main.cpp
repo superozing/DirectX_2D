@@ -41,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // CEngine 초기화 설정
-    IF_FAILED(INST(CEngine)->init(hWnd, Vec2(1280, 768)), L"CEngine 초기화 설정");
+    IF_FAILED(CEngine::GetInst()->init(hWnd, Vec2(1280, 768)), L"CEngine 초기화 설정");
 
     // PeekMessage를 통해서 메세지 루프가 없을 경우에도 tick을 수행할 수 있도록 해줌.
     while (true)
@@ -60,7 +60,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 TranslateMessage(&msg);
                 DispatchMessage(&msg);
             }
-
         }
         // 윈도우 메세지가 없을 경우 progress(tick) 수행
         else
@@ -81,7 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex{};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -114,7 +113,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(WINDOWNAME, L"Client", WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(WINDOWNAME, L"Client", WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)

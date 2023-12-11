@@ -28,13 +28,16 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 	// Device(장치) 초기화
 	D3D_FEATURE_LEVEL eLevel = D3D_FEATURE_LEVEL_11_0; // GPU가 지원하는 기능 수준
 
-	IF_FAILED(D3D11CreateDevice(nullptr
-							 , D3D_DRIVER_TYPE_HARDWARE, nullptr
-							 , D3D11_CREATE_DEVICE_DEBUG /*장치를 디버그로 생성하면 콘솔로 오류 정보를 알려주는 장점이 있다고 하네요.*/
-							 , nullptr, 0, D3D11_SDK_VERSION
-							 , m_Device.GetAddressOf(), &eLevel, m_Context.GetAddressOf())
-			, L"[CDevice.cpp, 24줄] Device와 Context 생성");
-
+	if (FAILED(D3D11CreateDevice(nullptr
+		, D3D_DRIVER_TYPE_HARDWARE, nullptr
+		, D3D11_CREATE_DEVICE_DEBUG
+		, nullptr, 0, D3D11_SDK_VERSION
+		, m_Device.GetAddressOf(), &eLevel, m_Context.GetAddressOf())))
+	{
+		MessageBox(nullptr, L"Device, Context 생성 실패", L"Device 초기화 실패", MB_OK);
+		return E_FAIL;
+	}		
+	
 	// 스왑체인 생성
 	IF_FAILED(CreateSwapChain(), L"[CDevice.cpp, 32줄] SwapChain 생성");
 
@@ -58,9 +61,9 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 	ViewportDesc.MaxDepth = 1.f;
 
 	// Viewport Set
-	m_Context->RSSetViewports(1, &ViewportDesc); // Viewport 개수와 설정할 Viewport
+	CONTEXT->RSSetViewports(1, &ViewportDesc); // Viewport 개수와 설정할 Viewport
 
-	return 0;
+	return S_OK;
 }
 
 void CDevice::ClearView(float(&Color)[4])
@@ -83,17 +86,20 @@ int CDevice::CreateSwapChain()
 	// SwapChain Description생성
 	DXGI_SWAP_CHAIN_DESC swapChainDesc{};
 	
+	swapChainDesc.BufferCount = 1;
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+
 	// 버퍼의 폭, 높이
 	swapChainDesc.BufferDesc.Width = (UINT)m_vRenderResolution.x;
 	swapChainDesc.BufferDesc.Height = (UINT)m_vRenderResolution.y;
 
-	// 주사율
-	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
-	swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
-
 	// 32바이트 중 R을 8, G를 8, B를 8, A를 8비트 만큼 사용하고, 
 	// 0에서 1사이의 실수로 나타내는 정규화 된 색상 포멧
 	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM; 
+
+	// 주사율
+	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
+	swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
 
 	swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;				  // 출력 창 크기가 다를 경우 드라이버가 알아서 처리
 	swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED; // 줄을 그리는 방법을 드라이버가 알아서 선택
@@ -120,13 +126,9 @@ int CDevice::CreateSwapChain()
 	ComPtr<IDXGIAdapter>	pAdapter = nullptr;		// 그래픽 카드(어답터)특성 얻기, 화면 속성 조회 용도
 	ComPtr<IDXGIFactory>	pFactory = nullptr;		// DXGI 객체 생성 - 보통 SwapChain을 생성하기 위해서 사용함.
 
-	m_Device->QueryInterface(__uuidof(IDXGIDevice)
-		, (void**)pIdxgiDevice.GetAddressOf());	// Device interface
-	pIdxgiDevice->GetParent(__uuidof(IDXGIAdapter)
-		, (void**)pAdapter.GetAddressOf()); // 그래픽카드 interface
-	pAdapter->GetParent(__uuidof(IDXGIFactory)
-		, (void**)pFactory.GetAddressOf());	// 팩토리 interface
-
+	m_Device->QueryInterface(__uuidof(IDXGIDevice), (void**)pIdxgiDevice.GetAddressOf());
+	pIdxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)pAdapter.GetAddressOf());
+	pAdapter->GetParent(__uuidof(IDXGIFactory), (void**)pFactory.GetAddressOf());
 
 	// SwapChain 생성
 	IF_FAILED(pFactory->CreateSwapChain(m_Device.Get(), &swapChainDesc, m_SwapChain.GetAddressOf())

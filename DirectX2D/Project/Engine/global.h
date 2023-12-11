@@ -54,8 +54,8 @@ using namespace DirectX::SimpleMath;
 // 엔진 헤더 참조
 #pragma region _	Engine Header include
 
-#include "define.h"
 #include "singleton.h"
+#include "define.h"
 #include "struct.h"
 
 #pragma endregion

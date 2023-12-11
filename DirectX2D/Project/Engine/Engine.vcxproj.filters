@@ -115,6 +115,7 @@
     <ClInclude Include="CGraphicsShader.h">
       <Filter>06. Asset\Shader\GraphicsShader</Filter>
     </ClInclude>
+    <ClInclude Include="CGameObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -157,6 +158,7 @@
     <ClCompile Include="CGraphicsShader.cpp">
       <Filter>06. Asset\Shader\GraphicsShader</Filter>
     </ClCompile>
+    <ClCompile Include="CGameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

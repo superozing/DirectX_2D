@@ -39,10 +39,6 @@ public:
 public:
     virtual void UpdateData();
 
-
-private:
-    int CompileStd2D(const wstring& _strRelativePath, const string& _strFuncName);
-
 public:
     CGraphicsShader();
     ~CGraphicsShader();

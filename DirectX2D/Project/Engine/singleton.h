@@ -31,6 +31,7 @@ public: // 생성자, 소멸자
 
 	CSingleton()
 	{
+		typedef void(*FUNC_TYPE)(void);
 		atexit((FUNC_TYPE)(&CSingleton::Destroy)); // 프로그램 종료 시 동작 -> 알아서 객체를 삭제하도록 해주어요.
 	}
 
