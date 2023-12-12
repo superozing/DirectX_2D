@@ -58,5 +58,36 @@ enum class ASSET_TYPE
 	GRAPHICS_SHADER,
 };
 
+// 컴포넌트의 타입을 이제 인덱스를 사용해서 들고 있도록 해줌.
+// 이러면 컴포넌트를 추가하는 순서에 상관 없이 원하는 인덱스로 바로바로 접근이 가능하다.
+// 만약에 충돌체가 여러 개인 경우는 어떻게 해야 할까?
+enum class COMPONENT_TYPE
+{
+	TRANSFORM,	// 오브젝트의 위치,크기,회전
+
+	COLLIDER2D,	// 2차원 충돌체
+	COLLIDER3D, // 3차원 충돌체
+
+	ANIMATOR2D,	// 스프라이트 Animation
+	ANIMATOR3D,	// Bone Skinning Animation
+
+	LIGHT2D,	// 2차원 광원
+	LIGHT3D,	// 3차원 광원
+
+	CAMERA,		// 카메라 기능
+
+
+
+	// 렌더링 기능 관련 컴포넌트
+	MESHRENDER,
+	TILEMAP,
+	PARTICLESYSTEM,
+	SKYBOX,
+	DECAL,
+	LANDSCAPE,
+
+	END,
+};
+
 #pragma endregion
 

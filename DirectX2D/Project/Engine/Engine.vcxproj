@@ -155,6 +155,7 @@ call EngineCopy.bat</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CAsset.h" />
+    <ClInclude Include="CComponent.h" />
     <ClInclude Include="CDevice.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
@@ -177,6 +178,7 @@ call EngineCopy.bat</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAsset.cpp" />
+    <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CDevice.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
