@@ -79,11 +79,11 @@ enum class COMPONENT_TYPE
 
 
 	// 렌더링 기능 관련 컴포넌트
-	MESHRENDER,
-	TILEMAP,
-	PARTICLESYSTEM,
-	SKYBOX,
-	DECAL,
+	MESHRENDER, // 매쉬 렌더
+	TILEMAP,	// 타입맵
+	PARTICLESYSTEM, // 파티클 시스템 (여기까지가 2D까지 만들 컴포넌트) 
+	SKYBOX,		// 스카이박스
+	DECAL,		// 데칼
 	LANDSCAPE,
 
 	END,
