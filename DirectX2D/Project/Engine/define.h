@@ -7,6 +7,8 @@ typedef Vector2 Vec2;
 typedef Vector3 Vec3;
 typedef Vector4 Vec4;
 
+typedef UINT I;
+
 
 #pragma endregion
 #pragma region _	Define - Function
@@ -85,6 +87,16 @@ enum class COMPONENT_TYPE
 	SKYBOX,		// 스카이박스
 	DECAL,		// 데칼
 	LANDSCAPE,
+
+	END,
+};
+
+// 방향 정보를 나타내는 enum class 
+enum class DIR_TYPE
+{
+	RIGHT,
+	UP,
+	FRONT,
 
 	END,
 };
