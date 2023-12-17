@@ -2,7 +2,7 @@
 #include "CTransform.h"
 
 CTransform::CTransform()
-	:CComponent(COMPONENT_TYPE::TRANSFORM) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ú½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	:CComponent(COMPONENT_TYPE::TRANSFORM) // ÄÄÆ÷³ÍÆ®¿¡ ÀÚ½Å Å¸ÀÔ ¸í½Ã
 {
 }
 
@@ -21,6 +21,10 @@ void CTransform::UpdateData()
 	transform.vWorldPos = m_vRelativePos;
 	transform.vWorldScale = m_vRelativeScale;
 
-	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	// »ó¼ö ¹öÆÛ Ãß°¡ ÈÄ ±¸Çö ¿¹Á¤
+	// À§Ä¡Á¤º¸¸¦ Transform »ó¼ö¹öÆÛ¿¡ º¸³»°í, B0 ·¹Áö½ºÅÍ¿¡ ¹ÙÀÎµù ÇØµÒ
+	CConstBuffer* pCB = CDevice::GetInst()->GetConstBuffer(CB_TYPE::TRANSFORM);
+	pCB->SetData(&transform);
+	pCB->UpdateData(0);
 }
 

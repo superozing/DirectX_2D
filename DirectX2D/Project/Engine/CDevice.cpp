@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "CDevice.h"
 
+#include "CConstBuffer.h"
+
 CDevice::CDevice()
 	: m_hRenderWindow(nullptr)
+	, m_arrCB{}
 {
 }
 
@@ -39,12 +42,12 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 	}		
 	
 	// 스왑체인 생성
-	IF_FAILED(CreateSwapChain(), L"[CDevice.cpp, 32줄] SwapChain 생성");
+	IF_FAILED(CreateSwapChain(), L"[CDevice.cpp] SwapChain 생성");
 
 	// 렌더 타겟과 렌더 타겟 뷰, 뎁스 스텐실 타겟과 뎁스 스텐실 뷰 생성 
-	IF_FAILED(CreateTargetView(), L"[CDevice.cpp, 35줄] 타겟과 View 생성");
+	IF_FAILED(CreateTargetView(), L"[CDevice.cpp] 타겟과 View 생성");
 
-
+	
 	// Viewport 생성
 	D3D11_VIEWPORT ViewportDesc{};
 
@@ -62,6 +65,9 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 
 	// Viewport Set
 	CONTEXT->RSSetViewports(1, &ViewportDesc); // Viewport 개수와 설정할 Viewport
+
+	// 상수 버퍼 생성
+	IF_FAILED(CreateConstBuffer(), L"[CDevice.cpp] 상수 버퍼 생성");
 
 	return S_OK;
 }
@@ -193,5 +199,20 @@ int CDevice::CreateTargetView()
 	// OM(Output Merge State) 에 RenderTargetTexture 와 DepthStencilTexture 세팅
 	m_Context->OMSetRenderTargets(1, m_RTView.GetAddressOf(), m_DSView.Get()); // 그러게...? 왜 RT는 이중 포인터를 넘기면서 DS는 포인터를 넘기지?
 	
+	return S_OK;
+}
+
+int CDevice::CreateConstBuffer()
+{
+	// Transform 상수 버퍼 생성
+	m_arrCB[(I)CB_TYPE::TRANSFORM] = new CConstBuffer;
+	m_arrCB[(I)CB_TYPE::TRANSFORM]->Create(sizeof(tTransform), 1);
+
+	// MATERIAL_CONST 상수 버퍼 생성
+
+	// GLOBAL_DATA 상수 버퍼 생성
+	
+	// ANIMATION 상수 버퍼 생성
+
 	return S_OK;
 }

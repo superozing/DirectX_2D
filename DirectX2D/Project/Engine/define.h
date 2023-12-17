@@ -92,11 +92,25 @@ enum class COMPONENT_TYPE
 };
 
 // 방향 정보를 나타내는 enum class 
+// 음수를 가리키면 각자 반대의 방향을 가리킬 수 있다.
+// 총 x, y, z축 6방향을 가리킬 수 있다.
 enum class DIR_TYPE
 {
 	RIGHT,
 	UP,
 	FRONT,
+
+	END,
+};
+
+
+// 상수버퍼 종류
+enum class CB_TYPE
+{
+	TRANSFORM,		// 트랜스폼
+	MATERIAL_CONST, // 상수 머터리얼
+	GLOBAL_DATA,	// GD
+	ANIMATION,		// animation
 
 	END,
 };

@@ -85,6 +85,9 @@
     <Filter Include="08. Component\00. RenderComponent\03. ParticleSystem">
       <UniqueIdentifier>{919e10e2-fde2-4168-93b2-7659b2109928}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Device\ConstBuffer">
+      <UniqueIdentifier>{17c54ead-2367-4668-866c-20f382c7c86d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -148,7 +151,15 @@
     <ClInclude Include="CGameObject.h">
       <Filter>07. GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="CRenderComponent.h" />
+    <ClInclude Include="CRenderComponent.h">
+      <Filter>08. Component\00. RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>08. Component\01. Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CConstBuffer.h">
+      <Filter>03. Device\ConstBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -197,7 +208,15 @@
     <ClCompile Include="CGameObject.cpp">
       <Filter>07. GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="CRenderComponent.cpp" />
+    <ClCompile Include="CRenderComponent.cpp">
+      <Filter>08. Component\00. RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>08. Component\01. Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="CConstBuffer.cpp">
+      <Filter>03. Device\ConstBuffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

@@ -1,6 +1,9 @@
 #pragma once
 #include "singleton.h"
 
+class CConstBuffer;
+
+
 // 엔진 라이브러리의 가장 대표가 되는 싱글턴 객체.
 // DirectX 라이브러리를 사용해서 GPU 관련 작업을 진행해요.
 class CDevice :
@@ -23,10 +26,15 @@ private: // ComPtr: DirectX의 스마트 포인터
 	HWND							m_hRenderWindow;
 	Vec2							m_vRenderResolution;
 
+	// 상수 버퍼들
+	CConstBuffer* m_arrCB[(I)CB_TYPE::END];
+
+
 public: // Get, Set
 	ID3D11Device*			GetDevice()	 { return m_Device.Get(); }
 	ID3D11DeviceContext*	GetContext() { return m_Context.Get(); }
 
+	CConstBuffer* GetConstBuffer(CB_TYPE _type) const { return m_arrCB[(I)_type]; }
 
 public:
 	int init(HWND _hWnd, Vec2 _vResolution);
@@ -41,5 +49,6 @@ public:
 private:
 	int CreateSwapChain();
 	int CreateTargetView();
+	int CreateConstBuffer();
 };
 
