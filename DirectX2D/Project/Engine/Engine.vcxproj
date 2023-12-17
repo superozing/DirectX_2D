@@ -165,6 +165,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CMesh.h" />
     <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CRenderComponent.h" />
     <ClInclude Include="CShader.h" />
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="define.h" />
@@ -188,6 +189,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CMesh.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CRenderComponent.cpp" />
     <ClCompile Include="CShader.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="Engine.cpp" />

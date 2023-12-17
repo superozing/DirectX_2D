@@ -73,6 +73,18 @@
     <Filter Include="08. Component\08. Camera">
       <UniqueIdentifier>{288fd2e2-41d2-41a6-9686-a7c60c6804f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="08. Component\00. RenderComponent">
+      <UniqueIdentifier>{54dfd6f1-b328-4865-9a56-8c24fc4e6db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\00. RenderComponent\01. MeshRender">
+      <UniqueIdentifier>{50b9cbf7-c531-4a7d-ab3a-36ba22fca1ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\00. RenderComponent\02. TileMap">
+      <UniqueIdentifier>{bff39326-8e16-4ce5-99cd-008ed8f71a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\00. RenderComponent\03. ParticleSystem">
+      <UniqueIdentifier>{919e10e2-fde2-4168-93b2-7659b2109928}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -136,6 +148,7 @@
     <ClInclude Include="CGameObject.h">
       <Filter>07. GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="CRenderComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -184,6 +197,7 @@
     <ClCompile Include="CGameObject.cpp">
       <Filter>07. GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="CRenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
