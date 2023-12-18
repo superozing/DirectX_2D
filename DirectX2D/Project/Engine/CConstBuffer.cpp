@@ -5,6 +5,8 @@
 
 CConstBuffer::CConstBuffer()
     : m_Desc{} // Create에서 초기화
+	, m_ElementCount(0)
+	, m_ElementSize(0)
 {
 }
 
