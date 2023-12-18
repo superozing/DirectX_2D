@@ -27,14 +27,14 @@ private: // ComPtr: DirectX의 스마트 포인터
 	Vec2							m_vRenderResolution;
 
 	// 상수 버퍼들
-	CConstBuffer* m_arrCB[(I)CB_TYPE::END];
+	CConstBuffer* m_arrCB[(UINT)CB_TYPE::END];
 
 
 public: // Get, Set
 	ID3D11Device*			GetDevice()	 { return m_Device.Get(); }
 	ID3D11DeviceContext*	GetContext() { return m_Context.Get(); }
 
-	CConstBuffer* GetConstBuffer(CB_TYPE _type) const { return m_arrCB[(I)_type]; }
+	CConstBuffer* GetConstBuffer(CB_TYPE _type) const { return m_arrCB[(UINT)_type]; }
 
 public:
 	int init(HWND _hWnd, Vec2 _vResolution);

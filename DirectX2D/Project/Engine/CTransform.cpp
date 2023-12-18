@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "CTransform.h"
+#include "CConstBuffer.h"
+#include "CDevice.h"
 
 CTransform::CTransform()
 	:CComponent(COMPONENT_TYPE::TRANSFORM) // 컴포넌트에 자신 타입 명시

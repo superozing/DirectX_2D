@@ -10,7 +10,7 @@ private:
     Vec3    m_vRealtiveRotation;   // 회전 정보
 
     // 방향 정보
-    Vec3    m_arrDir[(I)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
+    Vec3    m_arrDir[(UINT)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
 
     Matrix  m_matWorld;  // 월드 행렬
 

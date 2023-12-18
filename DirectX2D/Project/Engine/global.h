@@ -57,5 +57,6 @@ using namespace DirectX::SimpleMath;
 #include "singleton.h"
 #include "define.h"
 #include "struct.h"
+#include "Func.h"
 
 #pragma endregion

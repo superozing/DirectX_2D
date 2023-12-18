@@ -7,9 +7,6 @@ typedef Vector2 Vec2;
 typedef Vector3 Vec3;
 typedef Vector4 Vec4;
 
-typedef UINT I;
-
-
 #pragma endregion
 #pragma region _	Define - Function
 

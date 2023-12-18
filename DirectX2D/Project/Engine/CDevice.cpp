@@ -205,8 +205,8 @@ int CDevice::CreateTargetView()
 int CDevice::CreateConstBuffer()
 {
 	// Transform 상수 버퍼 생성
-	m_arrCB[(I)CB_TYPE::TRANSFORM] = new CConstBuffer;
-	m_arrCB[(I)CB_TYPE::TRANSFORM]->Create(sizeof(tTransform), 1);
+	m_arrCB[(UINT)CB_TYPE::TRANSFORM] = new CConstBuffer;
+	m_arrCB[(UINT)CB_TYPE::TRANSFORM]->Create(sizeof(tTransform), 1);
 
 	// MATERIAL_CONST 상수 버퍼 생성
 

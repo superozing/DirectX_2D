@@ -160,6 +160,12 @@
     <ClInclude Include="CConstBuffer.h">
       <Filter>03. Device\ConstBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="CMeshRender.h">
+      <Filter>08. Component\00. RenderComponent\01. MeshRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Func.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -216,6 +222,9 @@
     </ClCompile>
     <ClCompile Include="CConstBuffer.cpp">
       <Filter>03. Device\ConstBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="CMeshRender.cpp">
+      <Filter>08. Component\00. RenderComponent\01. MeshRender</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
