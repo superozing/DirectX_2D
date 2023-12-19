@@ -2,9 +2,11 @@
 #include "CGameObject.h"
 
 #include "CComponent.h"
+#include "CRenderComponent.h"
 
 CGameObject::CGameObject()
 	: m_arrCom{}
+	, m_RenderCom(nullptr)
 {
 }
 
@@ -48,7 +50,11 @@ void CGameObject::finaltick()
 
 void CGameObject::render()
 {
-
+	// render component에게만 render를 보냄.
+	if (nullptr != m_RenderCom)
+	{
+		m_RenderCom->render();
+	}
 }
 
 void CGameObject::AddComponent(CComponent* _Comonent)
@@ -57,4 +63,7 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 
 	m_arrCom[(UINT)type] = _Comonent;
 	_Comonent->m_Owner = this;
+
+	// 컴포넌트를 render component로 dynamic_cast 해보기. 만약 아닐 경우 nullptr이 들어가게 된다.
+	m_RenderCom = dynamic_cast<CRenderComponent*>(_Comonent);
 }

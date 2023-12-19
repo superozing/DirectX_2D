@@ -19,7 +19,7 @@ public:
 
 public:
     COMPONENT_TYPE GetType() const { return m_Type; }
-
+    CGameObject* GetOwner() const { return m_Owner; }
 
 public:
     CComponent(COMPONENT_TYPE _type);
