@@ -25,7 +25,7 @@ CAssetMgr::~CAssetMgr()
 	}
 }
 
-
+// 엔진에서 사용할 기본 Asset 들을 AssetMgr 초기화 때 미리 등록해두고 찾아서 쓰게 함
 void CAssetMgr::init()
 {
 	CMesh* pMesh = nullptr;
