@@ -3,9 +3,11 @@
 
 #include "CDevice.h"
 
+// 매니저
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
+#include "CAssetMgr.h"
 
 #include "Test.h"
 
@@ -39,6 +41,7 @@ int CEngine::init(HWND _hWnd, Vec2 vResolution)
 	CPathMgr::init();
 	INST(CTimeMgr)->init();
 	INST(CKeyMgr)->init();
+	INST(CAssetMgr)->init();
 
 	// Test 초기화
 	IF_FAILED(TestInit(), L"TestInit");

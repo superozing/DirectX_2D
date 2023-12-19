@@ -55,6 +55,7 @@ enum class ASSET_TYPE
 	SOUND,
 	COMPUTE_SHADER,
 	GRAPHICS_SHADER,
+	END,
 };
 
 // 컴포넌트의 타입을 이제 인덱스를 사용해서 들고 있도록 해줌.
@@ -86,6 +87,8 @@ enum class COMPONENT_TYPE
 	LANDSCAPE,
 
 	END,
+
+	SCRIPT,
 };
 
 // 방향 정보를 나타내는 enum class 

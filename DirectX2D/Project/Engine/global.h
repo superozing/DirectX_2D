@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <Windows.h>
 
+#include <typeinfo>
+
 #include <string>
 
 // container
