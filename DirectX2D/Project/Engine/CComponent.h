@@ -1,7 +1,11 @@
 #pragma once
 #include "CEntity.h"
 
-class CGameObject;
+#include "CGameObject.h"
+
+// 컴포넌트 함수 생성 매크로
+#define GET_OTHER_COMPONENT(Type) C##Type* Type() { return m_Owner->Type(); }
+
 
 class CComponent :
     public CEntity
@@ -20,6 +24,11 @@ public:
 public:
     COMPONENT_TYPE GetType() const { return m_Type; }
     CGameObject* GetOwner() const { return m_Owner; }
+
+
+public: // 매크로로 함수 생성
+    GET_OTHER_COMPONENT(Transform);
+    GET_OTHER_COMPONENT(MeshRender);
 
 public:
     CComponent(COMPONENT_TYPE _type);

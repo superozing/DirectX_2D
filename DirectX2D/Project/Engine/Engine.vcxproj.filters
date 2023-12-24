@@ -88,6 +88,15 @@
     <Filter Include="03. Device\ConstBuffer">
       <UniqueIdentifier>{17c54ead-2367-4668-866c-20f382c7c86d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\AssetMgr">
+      <UniqueIdentifier>{113c2d2c-c1a5-4496-b932-b5535b95bec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\99. Script">
+      <UniqueIdentifier>{4e30a7f0-9d0f-476a-a80d-7e9c1f92763f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09. Script">
+      <UniqueIdentifier>{36cc87f0-b896-4761-9fa5-b57265d455eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -166,6 +175,18 @@
     <ClInclude Include="Func.h">
       <Filter>01. Header</Filter>
     </ClInclude>
+    <ClInclude Include="CAssetMgr.h">
+      <Filter>04. Manager\AssetMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>08. Component\99. Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerScript.h">
+      <Filter>09. Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -225,6 +246,15 @@
     </ClCompile>
     <ClCompile Include="CMeshRender.cpp">
       <Filter>08. Component\00. RenderComponent\01. MeshRender</Filter>
+    </ClCompile>
+    <ClCompile Include="CAssetMgr.cpp">
+      <Filter>04. Manager\AssetMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>08. Component\99. Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerScript.cpp">
+      <Filter>09. Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
