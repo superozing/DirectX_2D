@@ -14,7 +14,7 @@ CAssetMgr::~CAssetMgr()
 	// 모든 에셋 해제
 	for (UINT i = 0; i < (UINT)ASSET_TYPE::END; ++i)
 	{
-		for (auto const& pair : m_mapAsset[i])
+		for (auto& pair : m_mapAsset[i])
 		{
 			if (nullptr != pair.second)
 			{
@@ -25,7 +25,7 @@ CAssetMgr::~CAssetMgr()
 	}
 }
 
-// 엔진에서 사용할 기본 Asset 들을 AssetMgr 초기화 때 미리 등록해두고 찾아서 쓰게 함
+// 엔진에서 사용할 기본적인 Asset 들을 AssetMgr 초기화 때 미리 등록해두고 찾아서 쓰게 함
 void CAssetMgr::init()
 {
 	CMesh* pMesh = nullptr;

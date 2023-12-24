@@ -25,12 +25,13 @@ public:
     T* FindAsset(const wstring& _strKey);
 };
 
+// AddAsset과 FindAsset 함수에서 typeid 비교를 통해서 에셋의 타입을 반환해줌.
 template<typename T>
-inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
+ASSET_TYPE GetAssetType()
 {
     // T의 typeid를 받아옴.
     const type_info& info = typeid(T);
-    
+
     ASSET_TYPE type = ASSET_TYPE::END;
 
     // 만약 T의 타입ID와 CMesh의 타입ID가 같다면 T는 CMesh의 객체이다
@@ -39,21 +40,43 @@ inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
     case &typeid(CMesh) :
         type = ASSET_TYPE::MESH;
         break;
-    case& typeid(CGraphicsShader) :
+
+    case &typeid(CGraphicsShader) :
         type = ASSET_TYPE::GRAPHICS_SHADER;
         break;
+
+    default:
+        break;
     }
-    
+
     // T의 타입이 잘못 들어왔을 경우
     if (m_mapAsset->end() == m_mapAsset[(UINT)type].find(_strKey))
     {
         IF_FAILED(E_FAIL, "[CAssetMgr.h] 잘못된 타입의 에셋을 추가하려고 했습니다.");
         assert(nullptr);
     }
+
+    return type;
+}
+
+template<typename T>
+inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
+{
+    ASSET_TYPE Type = GetAssetType<T>();
+    auto iter = m_mapAsset[(UINT)Type].find(_strKey);
+    if (iter != m_mapAsset[(UINT)Type].end()) // 만약 이미 이전에 데이터를 넣은 적이 있다면 assert
+        assert(nullptr);
+    // 없다면 insert
+    m_mapAsset[(UINT)Type].insert({ _strKey, _Asset });
 }
 
 template<typename T>
 inline T* CAssetMgr::FindAsset(const wstring& _strKey)
 {
-    return nullptr;
+    ASSET_TYPE Type = GetAssetType<T>();
+    auto iter = m_mapAsset[(UINT)Type].find(_strKey);
+    if (iter == m_mapAsset[(UINT)Type].end()) // 만약 해당 데이터가 없을 경우 nullptr 반환
+        return nullptr;
+    // 해당 키 값 데이터의 second(에셋)을 반환
+    return (T*)iter->second;
 }
