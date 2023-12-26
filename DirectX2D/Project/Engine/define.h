@@ -42,7 +42,7 @@ typedef Vector4 Vec4;
 #pragma endregion
 #pragma region _	Define - constexpr
 
-
+DEFINE LAYER_MAX = 32;
 
 #pragma endregion
 #pragma region _	enum class
