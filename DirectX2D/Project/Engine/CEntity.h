@@ -18,6 +18,6 @@ public: // Get, Set
 
 public:
 	CEntity();
-	~CEntity();
+	virtual ~CEntity();
 };
 
