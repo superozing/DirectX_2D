@@ -8,6 +8,7 @@
 #include "CKeyMgr.h"
 #include "CPathMgr.h"
 #include "CAssetMgr.h"
+#include "CLevelMgr.h"
 
 #include "Test.h"
 
@@ -42,9 +43,7 @@ int CEngine::init(HWND _hWnd, Vec2 vResolution)
 	INST(CTimeMgr)->init();
 	INST(CKeyMgr)->init();
 	INST(CAssetMgr)->init();
-
-	// Test ÃÊ±âÈ­
-	IF_FAILED(TestInit(), L"TestInit");
+	INST(CLevelMgr)->init();
 
 	return S_OK;
 }
@@ -55,6 +54,10 @@ void CEngine::progress()
 	INST(CTimeMgr)->tick();
 	INST(CKeyMgr)->tick();
 
-	// Test Update
-	TestProgress();
+	// Level Update
+	INST(CLevelMgr)->tick();
+
+	// render, swapchain
+	INST(CLevelMgr)->render();
+
 }

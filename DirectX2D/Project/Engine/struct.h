@@ -12,6 +12,5 @@ struct Vtx
 // 상수 버퍼 대응 구조체 (오프셋과 비슷한 개념)
 struct tTransform 
 {
-	Vec4	vWorldPos;
-	Vec4    vWorldScale;
+	Matrix matWorld; // 기존 정보를 행렬 하나로 관리 가능
 };

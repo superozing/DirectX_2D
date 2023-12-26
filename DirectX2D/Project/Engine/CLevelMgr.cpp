@@ -68,7 +68,7 @@ void CLevelMgr::render()
 	float ClearColor[4] = { 0.3f, 0.3f, 0.3f, 1.f };
 	CDevice::GetInst()->ClearView(ClearColor);
 
-
+	// 현재 레벨의 물체 render
 	m_CurLevel->render();
 
 

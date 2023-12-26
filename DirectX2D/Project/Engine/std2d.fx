@@ -4,8 +4,8 @@
 // 4096 byte 제한
 cbuffer TRANSFORM : register(b0)
 {
-    float4 g_vWorldPos;
-    float4 g_vWorldScale;
+    // 상수버퍼 대응 구조체와 항상 대응하게 해주어야 한다.
+    row_major float4x4 g_matWorld;
 }
 
 struct VS_IN // 버텍스 쉐이더에 알려줄 정보
@@ -28,9 +28,8 @@ VS_OUT VS_Std2D(VS_IN _in)
 {
     VS_OUT output = (VS_OUT) 0.f;
     
-    float2 vFinalPos = _in.vPos.xy * g_vWorldScale.xy + g_vWorldPos.xy;
+    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWorld); // 행렬 곱
     
-    output.vPosition = float4(vFinalPos, 0.f, 1.f);
     output.vColor = _in.vColor;
     output.vUV = _in.vUV;
     
