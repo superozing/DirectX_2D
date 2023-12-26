@@ -28,6 +28,8 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
     m_IdxCount = _IdxCount;
 
     // 버텍스 버퍼 desc 작성
+    m_VBDesc = {};
+
     m_VBDesc.ByteWidth           = sizeof(Vtx) * m_VtxCount; // 버퍼의 크기(Byte)
     m_VBDesc.StructureByteStride = sizeof(Vtx); // 정점 구조체의 크기(구조체가 정의 되지 않을 경우 0)
     m_VBDesc.BindFlags           = D3D11_BIND_VERTEX_BUFFER; // 바인딩: D3D11_BIND_VERTEX_BUFFER (정점 버퍼)
@@ -35,6 +37,8 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
     m_VBDesc.Usage               = D3D11_USAGE_DEFAULT; // 버퍼 사용 방법: 기본
 
     // 인덱스 버퍼 desc 작성
+    m_IBDesc = {};
+
     m_IBDesc.ByteWidth           = sizeof(UINT) * _IdxCount;
     m_IBDesc.StructureByteStride = sizeof(UINT);
     m_IBDesc.BindFlags           = D3D11_BIND_INDEX_BUFFER; // 바인딩: D3D11_BIND_INDEX_BUFFER (인덱스 버퍼)

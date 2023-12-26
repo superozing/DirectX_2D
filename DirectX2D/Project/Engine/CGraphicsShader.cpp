@@ -53,7 +53,7 @@ int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const s
 	*/
 
 	// 정점 구조 정보(Element Desc) 생성
-	D3D11_INPUT_ELEMENT_DESC arrElement[3] = {};
+	D3D11_INPUT_ELEMENT_DESC arrElement[3]{};
 
 	// Vec3 vPos - 정점의 좌표
 	arrElement[0].InputSlot = 0;				// 입력 데이터가 어느 입력 슬롯에 위치하는지. 여러 입력 슬롯이 들어갈 경우에만 사용.
