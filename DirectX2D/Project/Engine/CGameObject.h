@@ -8,6 +8,8 @@
 class CComponent;
 class CRenderComponent;
 
+class CScript;
+
 class CGameObject :
     public CEntity
 {
@@ -17,6 +19,9 @@ private:
 
     // render 관련 컴포넌트는 단 한 개만 설정할 수 있다.
     CRenderComponent* m_RenderCom;
+
+    // 하나의 게임 오브젝트가 여러 개의 스크립트를 가질 수 있다.
+    vector<CScript*> m_vecScript;
 
 public:
     void begin();
