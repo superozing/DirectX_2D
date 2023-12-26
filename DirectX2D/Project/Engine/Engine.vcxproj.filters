@@ -97,6 +97,9 @@
     <Filter Include="09. Script">
       <UniqueIdentifier>{36cc87f0-b896-4761-9fa5-b57265d455eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\LevelMgr">
+      <UniqueIdentifier>{f328b797-ad30-4f96-bbac-54ba2acec5f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -132,7 +135,6 @@
     <ClInclude Include="CLevel.h">
       <Filter>05. Level</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h" />
     <ClInclude Include="CKeyMgr.h">
       <Filter>04. Manager\KeyMgr</Filter>
     </ClInclude>
@@ -187,6 +189,12 @@
     <ClInclude Include="CPlayerScript.h">
       <Filter>09. Script</Filter>
     </ClInclude>
+    <ClInclude Include="CLayer.h">
+      <Filter>05. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevelMgr.h">
+      <Filter>04. Manager\LevelMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -207,7 +215,6 @@
     <ClCompile Include="CLevel.cpp">
       <Filter>05. Level</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="CKeyMgr.cpp">
       <Filter>04. Manager\KeyMgr</Filter>
     </ClCompile>
@@ -255,6 +262,12 @@
     </ClCompile>
     <ClCompile Include="CPlayerScript.cpp">
       <Filter>09. Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CLayer.cpp">
+      <Filter>05. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevelMgr.cpp">
+      <Filter>04. Manager\LevelMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

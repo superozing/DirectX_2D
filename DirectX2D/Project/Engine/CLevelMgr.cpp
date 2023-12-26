@@ -20,7 +20,8 @@ CLevelMgr::CLevelMgr()
 
 CLevelMgr::~CLevelMgr()
 {
-
+	if (nullptr != m_CurLevel)
+		delete m_CurLevel;
 }
 
 void CLevelMgr::init()
@@ -40,8 +41,8 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CPlayerScript);
 
 	// Transform 정보 설정
-	pObj->Transform()->SetRelativePos(Vec3(-0.5f, 0.f, 0.f));
-	pObj->Transform()->SetRelativeScale(Vec3(0.5f, 0.5f, 0.5f));
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
+	pObj->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 1.f));
 
 	// 매쉬, 쉐이더 설정
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));

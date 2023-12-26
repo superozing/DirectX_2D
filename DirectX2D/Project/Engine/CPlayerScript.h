@@ -11,5 +11,8 @@ private:
 public:
     virtual void tick() override;
 
+public:
+    CPlayerScript();
+    ~CPlayerScript();
 };
 

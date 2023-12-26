@@ -10,7 +10,6 @@
 #include "CAssetMgr.h"
 #include "CLevelMgr.h"
 
-#include "Test.h"
 
 CEngine::CEngine()
 	: m_hMainWindow(nullptr)
@@ -20,7 +19,6 @@ CEngine::CEngine()
 
 CEngine::~CEngine()
 {
-	TestRelease();
 }
 
 int CEngine::init(HWND _hWnd, Vec2 vResolution)

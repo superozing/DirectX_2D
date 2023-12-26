@@ -79,6 +79,8 @@ void CGameObject::AddComponent(CComponent* _Component)
 
 		// Script 벡터에 추가
 		m_vecScript.push_back((CScript*)_Component);
+		_Component->m_Owner = this;
+
 	}
 	// Script가 아닌 기본 컴포넌트일 경우
 	else
@@ -97,7 +99,7 @@ void CGameObject::AddComponent(CComponent* _Component)
 		if (nullptr != pRenderCom)
 		{
 			// 이미 한 종류 이상의 RenderComponent 를 보유하고 있는 경우
-			if (nullptr != m_RenderCom);
+			if (nullptr != m_RenderCom)
 			{
 				MessageBox(nullptr, L"GameObject에 rendercomponent를 2개 이상 넣으려고 함", L"[CGameObject.cpp]", MB_OK);
 				assert(nullptr);

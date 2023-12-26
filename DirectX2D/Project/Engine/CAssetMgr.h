@@ -2,9 +2,9 @@
 #include "singleton.h"
 
 #include "CAsset.h"
+#include "CGraphicsShader.h"
+#include "CMesh.h"
 
-class CMesh;
-class CGraphicsShader;
 
 
 class CAssetMgr :
@@ -35,26 +35,10 @@ ASSET_TYPE GetAssetType()
     ASSET_TYPE type = ASSET_TYPE::END;
 
     // 만약 T의 타입ID와 CMesh의 타입ID가 같다면 T는 CMesh의 객체이다
-    switch (&info)
-    {
-    case &typeid(CMesh) :
+    if (&info == &typeid(CMesh))
         type = ASSET_TYPE::MESH;
-        break;
-
-    case &typeid(CGraphicsShader) :
+    else if (&info == &typeid(CGraphicsShader))
         type = ASSET_TYPE::GRAPHICS_SHADER;
-        break;
-
-    default:
-        break;
-    }
-
-    // T의 타입이 잘못 들어왔을 경우
-    if (m_mapAsset->end() == m_mapAsset[(UINT)type].find(_strKey))
-    {
-        IF_FAILED(E_FAIL, "[CAssetMgr.h] 잘못된 타입의 에셋을 추가하려고 했습니다.");
-        assert(nullptr);
-    }
 
     return type;
 }
@@ -74,7 +58,8 @@ template<typename T>
 inline T* CAssetMgr::FindAsset(const wstring& _strKey)
 {
     ASSET_TYPE Type = GetAssetType<T>();
-    auto iter = m_mapAsset[(UINT)Type].find(_strKey);
+    map<wstring, CAsset*>::iterator iter = m_mapAsset[(UINT)Type].find(_strKey);
+
     if (iter == m_mapAsset[(UINT)Type].end()) // 만약 해당 데이터가 없을 경우 nullptr 반환
         return nullptr;
     // 해당 키 값 데이터의 second(에셋)을 반환
