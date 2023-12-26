@@ -23,7 +23,7 @@ public:
 
 public:
     COMPONENT_TYPE GetType() const { return m_Type; }
-    CGameObject* GetOwner() const { return m_Owner; }
+    CGameObject* GetOwner() { return m_Owner; }
 
 
 public: // 매크로로 함수 생성

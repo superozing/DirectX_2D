@@ -66,7 +66,6 @@ void CGameObject::render()
 	}
 }
 
-#define TYPE (UINT)type
 void CGameObject::AddComponent(CComponent* _Component)
 {
 	COMPONENT_TYPE type = _Component->GetType();
@@ -85,12 +84,12 @@ void CGameObject::AddComponent(CComponent* _Component)
 	// Script가 아닌 기본 컴포넌트일 경우
 	else
 	{
-		if (nullptr != m_arrCom[TYPE])
+		if (nullptr != m_arrCom[(UINT)type])
 		{
 			MessageBox(nullptr, L"GameObject에 동일한 component를 2개 이상 넣으려고 함", L"[CGameObject.cpp]", MB_OK);
 			assert(nullptr);
 		}
-		m_arrCom[TYPE] = _Component;
+		m_arrCom[(UINT)type] = _Component;
 		_Component->m_Owner = this;
 		
 
@@ -110,4 +109,3 @@ void CGameObject::AddComponent(CComponent* _Component)
 	}
 
 }
-#undef TYPE

@@ -29,5 +29,7 @@ private:
 public:
     CAsset(ASSET_TYPE _Type);
     ~CAsset();
+
+    friend class CAssetMgr;
 };
 

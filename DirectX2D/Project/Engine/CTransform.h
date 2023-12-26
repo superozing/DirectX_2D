@@ -12,7 +12,7 @@ private:
     // 방향 정보
     Vec3    m_arrDir[(UINT)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
 
-    Matrix  m_matWorld;  // 월드 행렬
+    Matrix  m_matWorld;  // 상태 행렬
 
 public:
     virtual void finaltick() override;

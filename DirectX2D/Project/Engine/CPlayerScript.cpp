@@ -2,14 +2,12 @@
 #include "CPlayerScript.h"
 
 CPlayerScript::CPlayerScript()
-	:m_Speed(2.f)
+	: m_Speed(2.f)
 {
-
 }
 
 CPlayerScript::~CPlayerScript()
 {
-
 }
 
 void CPlayerScript::tick()

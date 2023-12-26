@@ -48,8 +48,8 @@ inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
 {
     ASSET_TYPE Type = GetAssetType<T>();
     auto iter = m_mapAsset[(UINT)Type].find(_strKey);
-    if (iter != m_mapAsset[(UINT)Type].end()) // 만약 이미 이전에 데이터를 넣은 적이 있다면 assert
-        assert(nullptr);
+    assert(iter == m_mapAsset[(UINT)Type].end());// 만약 이미 이전에 데이터를 넣은 적이 있다면 assert
+
     // 없다면 insert
     m_mapAsset[(UINT)Type].insert({ _strKey, _Asset });
 }
