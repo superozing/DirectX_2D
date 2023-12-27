@@ -42,8 +42,8 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CPlayerScript);
 
 	// Transform 정보 설정
-	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.1f));
-	pObj->Transform()->SetRelativeScale(Vec3(16.f,16.f, 1.f));
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 50.f));
+	pObj->Transform()->SetRelativeScale(Vec3(160.f,160.f, 1.f));
 
 	// 매쉬, 쉐이더 설정
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
