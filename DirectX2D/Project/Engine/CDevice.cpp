@@ -11,6 +11,7 @@ CDevice::CDevice()
 
 CDevice::~CDevice()
 {
+	Delete_Array(m_arrCB);
 }
 
 /*

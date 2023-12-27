@@ -10,7 +10,7 @@ cbuffer TRANSFORM : register(b0)
 
 struct VS_IN // 버텍스 쉐이더에 알려줄 정보
 {
-    float4 vColor   : COLOR0;
+    float4 vColor   : COLOR;
     float3 vPos     : POSITION;
     float2 vUV      : TEXCOORD;
 };
@@ -18,7 +18,7 @@ struct VS_IN // 버텍스 쉐이더에 알려줄 정보
 struct VS_OUT // 버텍스 쉐이더가 픽셀 쉐이더에게 알려줄 정보
 {
     float4 vPosition    : SV_Position;
-    float4 vColor       : COLOR0;
+    float4 vColor       : COLOR;
     float2 vUV          : TEXCOORD;
 };
 

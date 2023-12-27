@@ -54,6 +54,8 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
     IF_FAILED(DEVICE->CreateBuffer(&m_VBDesc, &tSubResourceData, m_VB.GetAddressOf())
         , L"Vertex Buffer 생성");
 
+    tSubResourceData = {};
+
     // 인덱스 버퍼 생성
     tSubResourceData.pSysMem = _Idx;
     IF_FAILED(DEVICE->CreateBuffer(&m_IBDesc, &tSubResourceData, m_IB.GetAddressOf())
@@ -66,6 +68,7 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
     memcpy(m_VtxSysMem, _Vtx, sizeof(Vtx) * m_VtxCount);
     memcpy(m_IdxSysMem, _Idx, sizeof(UINT) * m_IdxCount);
 
+    return S_OK;
     return S_OK;
 }
 
