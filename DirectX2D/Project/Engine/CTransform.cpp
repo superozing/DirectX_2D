@@ -32,7 +32,6 @@ void CTransform::finaltick()
 	m_matWorld._42 = m_vRelativePos.y;
 	m_matWorld._43 = m_vRelativePos.z;
 }
-
 void CTransform::UpdateData()
 {
 	tTransform transform = {};
@@ -43,4 +42,3 @@ void CTransform::UpdateData()
 	pCB->SetData(&transform);
 	pCB->UpdateData(0);
 }
-

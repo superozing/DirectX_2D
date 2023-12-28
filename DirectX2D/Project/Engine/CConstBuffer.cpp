@@ -47,7 +47,7 @@ void CConstBuffer::SetData(void* _Src, UINT _ElementCount)
 	CONTEXT->Map(m_CB.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &tSub);
 
 	// 시스템 메모리(Src) -> GPU 메모리(tSub)로 Memcpy
-	memcpy(tSub.pData, _Src, _ElementCount);
+	memcpy(tSub.pData, _Src, _ElementCount * m_ElementSize);
 
 	CONTEXT->Unmap(m_CB.Get(), 0);
 }
