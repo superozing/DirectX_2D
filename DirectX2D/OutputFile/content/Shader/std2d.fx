@@ -61,14 +61,16 @@ VS_OUT VS_Std2D(VS_IN _in)
 // Pixel Shader 
 float4 PS_Std2D(VS_OUT _in) : SV_Target
 {
-    // Sample-> 특정 좌표(UV 기준)에 해당하는 색상 값을 가져옴
+    // Sample() - 특정 좌표(UV 기준)에 해당하는 색상 값을 가져옴
     float4 vColor = g_tex_0.Sample(g_sam_0, _in.vUV);
     
-    // 알파가 낮은 값(투명에 가까운 값)을 빨강으로 강제 치환
-    if (vColor.a <= 0.1f)
-        vColor.rgba = float4(1.f, 0.f, 0.f, 1.f);
     
-    // 흑백 값 표현
+    // 알파가 낮은 값(투명에 가까운 값)을 빨강으로 강제 치환
+    //if (vColor.a <= 0.1f)
+    //    vColor.rgba = float4(1.f, 0.f, 0.f, 1.f);
+    
+    
+    // 흑백 값 표현 - rgb를 더해서 나온 평균 값으로 해당 픽셀을 칠하면 된다.
     //float Aver = (vColor.r + vColor.g + vColor.b) / 3.f;
     //vColor.rgb = float3(Aver, Aver, Aver);
     //vColor.a = 1.f;
