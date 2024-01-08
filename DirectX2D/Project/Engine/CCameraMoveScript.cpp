@@ -27,7 +27,7 @@ void CCameraMoveScript::tick()
 	if (KEY_PRESSED(KEY::D))
 		vPos.x += DT * m_CamSpeed;
 
-	if (KEY_PRESSED(KEY::NUM1))
+	if (KEY_PRESSED(KEY::_1))
 	{
 		if (Camera()->GetProjType() == PROJ_TYPE::ORTHOGRAPHIC)
 			Camera()->SetScale(Camera()->GetScale() + DT * 0.2f);
@@ -35,7 +35,7 @@ void CCameraMoveScript::tick()
 			Camera()->SetFOV(Camera()->GetFOV() + DT * 2.f);
 	}
 
-	if (KEY_PRESSED(KEY::NUM2))
+	if (KEY_PRESSED(KEY::_2))
 	{
 		if (Camera()->GetProjType() == PROJ_TYPE::ORTHOGRAPHIC)
 			Camera()->SetScale(Camera()->GetScale() - DT * 0.2f);
