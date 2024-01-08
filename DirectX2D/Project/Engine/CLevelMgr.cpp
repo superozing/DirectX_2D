@@ -12,7 +12,7 @@
 
 #include "CMesh.h"
 #include "CGraphicsShader.h"
-#include <dxgidebug.h>
+#include "CTexture.h"
 
 CLevelMgr::CLevelMgr()
 	: m_CurLevel(nullptr)

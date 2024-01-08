@@ -1,11 +1,11 @@
 #pragma once
 #include "singleton.h"
 
+#include "CPathMgr.h"
 #include "CAsset.h"
-#include "CGraphicsShader.h"
-#include "CMesh.h"
 
-
+class CGraphicsShader;
+class CMesh;
 
 class CAssetMgr :
     public CSingleton<CAssetMgr>
@@ -23,6 +23,10 @@ public:
 
     template<typename T>
     T* FindAsset(const wstring& _strKey);
+
+    template<typename T>
+    T* Load(const wstring& _strKey, const wstring& _strRelativePath);
+
 };
 
 // AddAsset과 FindAsset 함수에서 typeid 비교를 통해서 에셋의 타입을 반환해줌.
@@ -64,4 +68,33 @@ inline T* CAssetMgr::FindAsset(const wstring& _strKey)
         return nullptr;
     // 해당 키 값 데이터의 second(에셋)을 반환
     return (T*)iter->second;
+}
+
+template<typename T>
+inline T* CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
+{
+    CAsset* pAsset = FindAsset<T>(_strKey);
+
+    // 로딩할 때 사용할 키로 이미 다른 에셋이 있다면 해당 키 값의 에셋 반환
+    if (nullptr != pAsset)
+        return pAsset;
+
+    wstring strFilePath = CPathMgr::GetContentPath() + _strRelativePath;
+
+    CAsset* pAsset = new T;
+
+    if (FAILED(pAsset->Load(strFilePath)))
+    {
+        MessageBox(nullptr, L"에셋 로딩 실패", L"에셋 로딩 실패", MB_OK);
+        delete pAsset;
+        return nullptr;
+    }
+
+    // 에셋 로딩 성공 시 map에 추가
+    pAsset->SetKey(_strKey);
+    pAsset->SetRelativePath(_strRelativePath);
+
+    AddAsset(_strKey, pAsset);
+
+    return pAsset;
 }

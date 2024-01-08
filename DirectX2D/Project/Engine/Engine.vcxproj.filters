@@ -100,6 +100,9 @@
     <Filter Include="04. Manager\LevelMgr">
       <UniqueIdentifier>{f328b797-ad30-4f96-bbac-54ba2acec5f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06. Asset\Texture">
+      <UniqueIdentifier>{5d8a6e40-406b-4c34-a5b7-fc1a20580135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -199,6 +202,7 @@
       <Filter>08. Component\08. Camera</Filter>
     </ClInclude>
     <ClInclude Include="CCameraMoveScript.h" />
+    <ClInclude Include="CTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -280,6 +284,7 @@
     <ClCompile Include="extern.cpp">
       <Filter>01. Header</Filter>
     </ClCompile>
+    <ClCompile Include="CTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

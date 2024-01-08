@@ -26,6 +26,8 @@ private:
 
     ASSET_TYPE GetAssetType() const { return m_Type; }
 
+    virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
+
 public:
     CAsset(ASSET_TYPE _Type);
     ~CAsset();

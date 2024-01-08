@@ -12,9 +12,17 @@ struct Vtx
 // 상수 버퍼 대응 구조체
 struct tTransform 
 {
-	Matrix matWorld; // 기존 정보를 행렬 하나로 관리 가능
+	Matrix	matWorld;
+	Matrix	matWorldInv;
+
 	Matrix	matView;
+	Matrix	matViewInv;
+
 	Matrix	matProj;
+	Matrix	matProjInv;
+
+	Matrix	matWV;		// 월드 행렬 * 뷰 행렬
+	Matrix	matWVP;		// 월드 뷰 행렬 * 투영 행렬
 };
 
 // extern.cpp에 정의
