@@ -18,6 +18,9 @@ private:
     virtual int Load(const wstring& _strFilePath) override;
 
 public:
+    void UpdateData(int _RegisterNum);
+
+public:
     CTexture();
     ~CTexture();
 };

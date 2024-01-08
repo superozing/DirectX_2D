@@ -6,6 +6,7 @@
 
 #include "CGraphicsShader.h"
 #include "CMesh.h"
+#include "CTexture.h"
 
 class CAssetMgr :
     public CSingleton<CAssetMgr>
@@ -41,6 +42,8 @@ ASSET_TYPE GetAssetType()
     // 만약 T의 타입ID와 CMesh의 타입ID가 같다면 T는 CMesh의 객체이다
     if (&info == &typeid(CMesh))
         type = ASSET_TYPE::MESH;
+    else if (&info == &typeid(CTexture))
+        type = ASSET_TYPE::TEXTURE;
     else if (&info == &typeid(CGraphicsShader))
         type = ASSET_TYPE::GRAPHICS_SHADER;
 
@@ -94,7 +97,8 @@ inline T* CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePat
     pAsset->SetKey(_strKey);
     pAsset->SetRelativePath(_strRelativePath);
 
-    AddAsset(_strKey, pAsset);
+    // *중요* 타입 명시를 해주어야 함.
+    AddAsset<T>(_strKey, (T*)pAsset);
 
     return (T*)pAsset;
 }
