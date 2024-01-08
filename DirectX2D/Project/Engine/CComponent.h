@@ -29,6 +29,7 @@ public:
 public: // 매크로로 함수 생성
     GET_OTHER_COMPONENT(Transform);
     GET_OTHER_COMPONENT(MeshRender);
+    GET_OTHER_COMPONENT(Camera);
 
 public:
     CComponent(COMPONENT_TYPE _type);

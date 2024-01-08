@@ -9,6 +9,7 @@ class CComponent;
 class CRenderComponent;
 
 class CScript;
+class CCamera;
 
 class CGameObject :
     public CEntity
@@ -30,11 +31,12 @@ public:
     void render();
 
 public:
-    CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }
+    CComponent* GetComponent(COMPONENT_TYPE _Type) const { return m_arrCom[(UINT)_Type]; }
 
     // 매크로 구문을 사용한 함수 정의
     GET_COMPONENT(Transform, TRANSFORM);    // Transform 번째 인덱스를 컴포넌트 배열에서 꺼내 형변환 후 반환해주는 함수가 된다
     GET_COMPONENT(MeshRender, MESHRENDER);
+    GET_COMPONENT(Camera, CAMERA);
 
 
 
