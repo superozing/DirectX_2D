@@ -29,6 +29,9 @@ private: // ComPtr: DirectX의 스마트 포인터
 	// 상수 버퍼들
 	CConstBuffer* m_arrCB[(UINT)CB_TYPE::END];
 
+	ComPtr<ID3D11RasterizerState>	m_arrRS[(UINT)RS_TYPE::END];
+	ComPtr<ID3D11DepthStencilState>	m_arrDS[(UINT)DS_TYPE::END];
+	ComPtr<ID3D11BlendState>		m_arrBS[(UINT)BS_TYPE::END];
 
 public: // Get, Set
 	ID3D11Device*			GetDevice()	 { return m_Device.Get(); }
@@ -36,6 +39,11 @@ public: // Get, Set
 
 	CConstBuffer*			GetConstBuffer(CB_TYPE _type) const { return m_arrCB[(UINT)_type]; }
 	Vec2					GetRenderResolution() const			{ return m_vRenderResolution; }
+
+
+	ComPtr<ID3D11RasterizerState>	GetRSState(RS_TYPE _Type) const { return m_arrRS[(UINT)_Type]; }
+	ComPtr<ID3D11DepthStencilState> GetDSState(DS_TYPE _Type) const { return m_arrDS[(UINT)_Type]; }
+	ComPtr<ID3D11BlendState>		GetBSState(BS_TYPE _Type) const { return m_arrBS[(UINT)_Type]; }
 
 public:
 	int init(HWND _hWnd, Vec2 _vResolution);
@@ -50,6 +58,11 @@ public:
 private:
 	int CreateSwapChain();
 	int CreateTargetView();
+
+	int CreateRasterizerState();
+	int CreateDepthStencilState();
+	int CreateBlendState();
+
 	int CreateConstBuffer();
 };
 

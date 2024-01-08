@@ -8,6 +8,9 @@
 CGraphicsShader::CGraphicsShader()
 	: CShader(ASSET_TYPE::GRAPHICS_SHADER)
 	, m_Topology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST) // 도형 렌더링 방식: 세 개의 정점을 삼각형으로 연결함
+	, m_RSType(RS_TYPE::CULL_BACK)
+	, m_DSType(DS_TYPE::LESS)
+	, m_BSType(BS_TYPE::DEFAULT)
 {
 }
 
@@ -140,9 +143,16 @@ int CGraphicsShader::CreatePixelShader(const wstring& _strRelativePath, const st
 // 세팅하지 않고 기본 값을 사용하더라도 nullptr로 밀어주어야 함.
 void CGraphicsShader::UpdateData()
 {
+	// 정점 구조 정보와 도형 render 방식
 	CONTEXT->IASetInputLayout(m_Layout.Get());
 	CONTEXT->IASetPrimitiveTopology(m_Topology);
 
+	// 현재 state값을 저장
+	CONTEXT->RSSetState(CDevice::GetInst()->GetRSState(m_RSType).Get());
+	CONTEXT->OMSetDepthStencilState(CDevice::GetInst()->GetDSState(m_DSType).Get(), 0);
+	CONTEXT->OMSetBlendState(CDevice::GetInst()->GetBSState(m_BSType).Get(), nullptr, 0xffffffff);
+
+	// 쉐이더 업데이트
 	CONTEXT->VSSetShader(m_VS.Get(), nullptr, 0); // 뒤의 인자 2개는 instance 사용 시 입력
 	CONTEXT->HSSetShader(m_HS.Get(), nullptr, 0);
 	CONTEXT->DSSetShader(m_DS.Get(), nullptr, 0);

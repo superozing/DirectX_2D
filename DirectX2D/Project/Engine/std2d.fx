@@ -54,7 +54,8 @@ VS_OUT VS_Std2D(VS_IN _in)
 // Pixel Shader 
 float4 PS_Std2D(VS_OUT _in) : SV_Target
 {
-    // 정점의 색상 정보를 그대로 반환.
+    _in.vColor.a = 1.f; // alpha 값을 강제로 1로 치환 
+    
     return _in.vColor;
 }
 

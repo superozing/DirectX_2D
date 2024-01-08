@@ -4,8 +4,8 @@
 #include "CPathMgr.h"
 #include "CAsset.h"
 
-class CGraphicsShader;
-class CMesh;
+#include "CGraphicsShader.h"
+#include "CMesh.h"
 
 class CAssetMgr :
     public CSingleton<CAssetMgr>
@@ -77,11 +77,11 @@ inline T* CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePat
 
     // 로딩할 때 사용할 키로 이미 다른 에셋이 있다면 해당 키 값의 에셋 반환
     if (nullptr != pAsset)
-        return pAsset;
+        return (T*)pAsset;
 
     wstring strFilePath = CPathMgr::GetContentPath() + _strRelativePath;
 
-    CAsset* pAsset = new T;
+    pAsset = new T;
 
     if (FAILED(pAsset->Load(strFilePath)))
     {
@@ -96,5 +96,5 @@ inline T* CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePat
 
     AddAsset(_strKey, pAsset);
 
-    return pAsset;
+    return (T*)pAsset;
 }

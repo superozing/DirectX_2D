@@ -23,9 +23,9 @@
 #include <DirectXMath.h>
 #include <DirectXTex/DirectXTex.h>
 #ifdef _DEBUG
-#pragma commment(lib, "DirectXTex\\DirectXTex_debug")
+#pragma comment(lib, "DirectXTex\\DirectXTex_debug")
 #else
-#pragma commment(lib, "DirectXTex\\DirectXTex")
+#pragma comment(lib, "DirectXTex\\DirectXTex")
 #endif
 
 #pragma comment(lib, "d3d11")
