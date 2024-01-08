@@ -10,9 +10,12 @@ private:
     Vec3    m_vRealtiveRotation;   // 회전 정보
 
     // 방향 정보
-    Vec3    m_arrDir[(UINT)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
+    Vec3    m_arrLocalDir[(UINT)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
+    Vec3    m_arrWorldDir[(UINT)DIR_TYPE::END]; // Right, Up, Front. 이 값을 음수로 놓으면 반대 방향을 가리키게 된다.
 
     Matrix  m_matWorld;  // 상태 행렬
+
+    bool m_bAbsolute; // 부모 오브젝트로부터 
 
 public:
     virtual void finaltick() override;
@@ -29,7 +32,10 @@ public:// Get, Set 함수
 
     const Matrix& GetWorldMat() { return m_matWorld; }
 
-    Vec3 GetDir(DIR_TYPE _type) const { return m_arrDir[(UINT)_type]; }
+    Vec3 GetLocalDir(DIR_TYPE _type) const { return m_arrLocalDir[(UINT)_type]; }
+    Vec3 GetWorldDir(DIR_TYPE _type) const { return m_arrWorldDir[(UINT)_type]; }
+
+    void SetAbsolute(bool _bAbsolute) { m_bAbsolute = _bAbsolute; }
 
 public:
     CTransform();

@@ -9,22 +9,34 @@
 CGameObject::CGameObject()
 	: m_arrCom{}
 	, m_RenderCom(nullptr)
+	, m_Parent(nullptr)
 {
 }
 
 CGameObject::~CGameObject()
 {
 	Delete_Array(m_arrCom);
+
+	// 모든 스크립트와 자식 삭제
+	Delete_Vec(m_vecScript);
+	Delete_Vec(m_vecChild);
 }
 
 void CGameObject::begin()
 {
+	// 자신의 begin()을 끝낸 이후 자신의 모든 자식 오브젝트들에게 begin 호출
 	for (UINT i = 0; i < UINT(COMPONENT_TYPE::END); ++i)
 	{
 		if (nullptr != m_arrCom[i])
 		{
 			m_arrCom[i]->begin();
 		}
+	}
+
+	// child begin
+	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	{
+		m_vecChild[i]->begin();
 	}
 }
 
@@ -44,6 +56,12 @@ void CGameObject::tick()
 	{
 		m_vecScript[i]->tick();
 	}
+
+	// child tick
+	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	{
+		m_vecChild[i]->tick();
+	}
 }
 
 void CGameObject::finaltick()
@@ -55,6 +73,12 @@ void CGameObject::finaltick()
 			m_arrCom[i]->finaltick();
 		}
 	}
+
+	// child finaltick
+	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	{
+		m_vecChild[i]->finaltick();
+	}
 }
 
 void CGameObject::render()
@@ -64,6 +88,46 @@ void CGameObject::render()
 	{
 		m_RenderCom->render();
 	}
+
+	// child render
+	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	{
+		m_vecChild[i]->render();
+	}
+}
+
+void CGameObject::DisconnectWithParent()
+{
+	// 부모로부터 부모의 자식 벡터(자신이 포함되어 있는 벡터)를 가져온다.
+	for (auto iter = m_Parent->m_vecChild.begin(); iter != m_Parent->m_vecChild.end(); ++iter)
+	{
+		if (*iter == this)
+		{
+			// 부모의 자식 벡터에서 자신을 삭제, 자신의 부모를 nullptr로 만들어서 연결 끊기
+			m_Parent->m_vecChild.erase(iter);
+			m_Parent = nullptr;
+
+			return;
+		}
+	}
+
+	// 부모가 없는 오브젝트에 DisconnectWithParent 함수를 호출 했거나
+	// 부모는 자식을 가리키기지 않고 있는데, 자식은 부모를 가리키고 있는 경우
+	assert(nullptr);
+}
+
+void CGameObject::AddChild(CGameObject* _Child)
+{
+	// 이전 부모 오브젝트가 있을 경우 ->
+	if (_Child->m_Parent)
+	{
+		// 이전 부모 오브젝트랑 연결 해제
+		_Child->DisconnectWithParent();
+	}
+
+	// 부모 자식 서로 연결
+	_Child->m_Parent = this;
+	m_vecChild.push_back(_Child);
 }
 
 void CGameObject::AddComponent(CComponent* _Component)

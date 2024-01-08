@@ -151,6 +151,8 @@ enum class BS_TYPE
 
 	ALPHA_BLEND,	// 알파 값을 적용
 
+	ONE_ZERO,
+
 	ONE_ONE,		
 
 	END,

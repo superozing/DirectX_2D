@@ -24,6 +24,11 @@ private:
     // 하나의 게임 오브젝트가 여러 개의 스크립트를 가질 수 있다.
     vector<CScript*> m_vecScript;
 
+    // 게임 오브젝트는 자식 게임 오브젝트를 벡터로 보유한다.
+    vector<CGameObject*> m_vecChild;
+
+    CGameObject* m_Parent; // 부모 오브젝트와 자식 오브젝트가 서로 가리키는 구조
+
 public:
     void begin();
     void tick();
@@ -31,6 +36,7 @@ public:
     void render();
 
 public:
+    void AddComponent(CComponent* _Comonent);
     CComponent* GetComponent(COMPONENT_TYPE _Type) const { return m_arrCom[(UINT)_Type]; }
 
     // 매크로 구문을 사용한 함수 정의
@@ -38,11 +44,13 @@ public:
     GET_COMPONENT(MeshRender, MESHRENDER);
     GET_COMPONENT(Camera, CAMERA);
 
+    CGameObject* GetParent() { return m_Parent; }
 
+    // 부모 오브젝트와의 연결 끊기
+    void DisconnectWithParent();
 
-public:
-    void AddComponent(CComponent* _Comonent);
-
+    // 자식 오브젝트 추가
+    void AddChild(CGameObject* _Child);
 
 public:
     CGameObject();
