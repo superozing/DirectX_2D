@@ -13,4 +13,9 @@ struct Vtx
 struct tTransform 
 {
 	Matrix matWorld; // 기존 정보를 행렬 하나로 관리 가능
+	Matrix	matView;
+	Matrix	matProj;
 };
+
+// extern.cpp에 정의
+extern tTransform g_Transform;

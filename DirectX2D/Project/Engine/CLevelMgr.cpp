@@ -8,6 +8,7 @@
 #include "CGameObject.h"
 #include "components.h"
 #include "CPlayerScript.h"
+#include "CCameraMoveScript.h"
 
 #include "CMesh.h"
 #include "CGraphicsShader.h"
@@ -30,10 +31,25 @@ void CLevelMgr::init()
 	// 초기 레벨 구성하기
 	m_CurLevel = new CLevel;
 
-	// GameObject 생성
-	CGameObject* pObj = nullptr;
 
-	pObj = new CGameObject;
+	// Camera Object 생성
+
+	// Camera Object 생성
+	CGameObject* pCamObj = new CGameObject;
+	pCamObj->AddComponent(new CTransform);
+	pCamObj->AddComponent(new CCamera);
+	pCamObj->AddComponent(new CCameraMoveScript);
+
+	pCamObj->Transform()->SetRelativePos(Vec3(0.5f, 0.f, 0.f));
+	pCamObj->Transform()->SetRelativeRotation(Vec3(0.f, 0.f, 0.f));
+
+	m_CurLevel->AddObject(pCamObj, 0);
+
+
+
+	// GameObject 생성
+	CGameObject* pObj = new CGameObject;
+
 	pObj->SetName(L"Player");
 
 	// 오브젝트에 컴포넌트, 렌더컴포넌트, 스크립트 추가
