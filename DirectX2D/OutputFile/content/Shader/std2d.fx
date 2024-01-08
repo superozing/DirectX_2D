@@ -5,9 +5,17 @@
 // 상수버퍼 대응 구조체와 항상 대응하게 해주어야 한다.
 cbuffer TRANSFORM : register(b0)
 {
-    row_major matrix g_matWorld;  // 월드 행렬
-    row_major matrix g_matView; // -> 뷰(카메라) 행렬
-    row_major matrix g_matProj; // -> 투영 행렬
+    row_major matrix g_matWorld;        // 월드 행렬
+    row_major matrix g_matWorldInv;     // 월드 역행렬
+    
+    row_major matrix g_matView;         // -> 뷰(카메라) 행렬
+    row_major matrix g_matViewInv;      // -> 뷰(카메라) 역행렬
+    
+    row_major matrix g_matProj;         // -> 투영 행렬
+    row_major matrix g_matProjInv;      // -> 역투영 행렬
+    
+    row_major matrix g_matWV;           // 월드 뷰 행렬
+    row_major matrix g_matWVP;          // 월드 뷰 투영 행렬
 }
 
 struct VS_IN // 버텍스 쉐이더에 알려줄 정보
