@@ -18,6 +18,13 @@ cbuffer TRANSFORM : register(b0)
     row_major matrix g_matWVP;          // 월드 뷰 투영 행렬
 }
 
+
+Texture2D g_tex_0 : register(t0);
+
+SamplerState g_sam_0 : register(s0);
+
+
+
 struct VS_IN // 버텍스 쉐이더에 알려줄 정보
 {
     float4 vColor   : COLOR;
@@ -54,9 +61,19 @@ VS_OUT VS_Std2D(VS_IN _in)
 // Pixel Shader 
 float4 PS_Std2D(VS_OUT _in) : SV_Target
 {
-    _in.vColor.a = 1.f; // alpha 값을 강제로 1로 치환 
+    // Sample-> 특정 좌표(UV 기준)에 해당하는 색상 값을 가져옴
+    float4 vColor = g_tex_0.Sample(g_sam_0, _in.vUV);
     
-    return _in.vColor;
+    // 알파가 낮은 값(투명에 가까운 값)을 빨강으로 강제 치환
+    if (vColor.a <= 0.1f)
+        vColor.rgba = float4(1.f, 0.f, 0.f, 1.f);
+    
+    // 흑백 값 표현
+    //float Aver = (vColor.r + vColor.g + vColor.b) / 3.f;
+    //vColor.rgb = float3(Aver, Aver, Aver);
+    //vColor.a = 1.f;
+    
+    return vColor;
 }
 
 
