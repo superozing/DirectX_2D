@@ -4,6 +4,8 @@
 #include <Engine\global.h>
 #include <Engine\CEngine.h>
 
+#include <crtdbg.h>
+
 #ifdef _DEBUG
 #pragma comment(lib, "Engine\\Engine_d.lib")
 #else

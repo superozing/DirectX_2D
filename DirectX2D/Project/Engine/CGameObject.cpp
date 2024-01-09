@@ -6,18 +6,23 @@
 
 #include "CScript.h"
 
+#include "CLevelMgr.h"
+#include "CLevel.h"
+#include "CLayer.h"
+
 CGameObject::CGameObject()
 	: m_arrCom{}
 	, m_RenderCom(nullptr)
 	, m_Parent(nullptr)
+	, m_iLayerIdx(NOT_SELECTED) // -1 -> 레이어가 지정되지 않은 상태로 본다.
 {
 }
 
 CGameObject::~CGameObject()
 {
-	Delete_Array(m_arrCom);
+	// 컴포넌트와 스크립트 삭제 이후, 자식 삭제
 
-	// 모든 스크립트와 자식 삭제
+	Delete_Array(m_arrCom);
 	Delete_Vec(m_vecScript);
 	Delete_Vec(m_vecChild);
 }
@@ -74,6 +79,10 @@ void CGameObject::finaltick()
 		}
 	}
 
+	// 자신을 레이어에 등록 시킴
+	CLayer* pCurLayer = CLevelMgr::GetInst()->GetCurrentLevel()->GetLayer(m_iLayerIdx);
+	pCurLayer->RegisterGameObject(this);
+
 	// child finaltick
 	for (size_t i = 0; i < m_vecChild.size(); ++i)
 	{
@@ -114,6 +123,17 @@ void CGameObject::DisconnectWithParent()
 	// 부모가 없는 오브젝트에 DisconnectWithParent 함수를 호출 했거나
 	// 부모는 자식을 가리키기지 않고 있는데, 자식은 부모를 가리키고 있는 경우
 	assert(nullptr);
+}
+
+void CGameObject::DisconnectWithLayer()
+{
+	// 이미 레이어 소속이 아닐 경우 바로 return
+	if (NOT_SELECTED == m_iLayerIdx)
+		return;
+
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+	CLayer* pCurLayer = pCurLevel->GetLayer(m_iLayerIdx);
+	pCurLayer->DetachGameObject(this);
 }
 
 void CGameObject::AddChild(CGameObject* _Child)

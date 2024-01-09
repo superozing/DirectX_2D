@@ -16,18 +16,20 @@ class CGameObject :
 {
 private:
     // 게임 오브젝트는 컴포넌트를 배열로 관리
-    CComponent*     m_arrCom[(UINT)COMPONENT_TYPE::END];
+    CComponent*             m_arrCom[(UINT)COMPONENT_TYPE::END];
 
     // render 관련 컴포넌트는 단 한 개만 설정할 수 있다.
-    CRenderComponent* m_RenderCom;
+    CRenderComponent*       m_RenderCom;
 
     // 하나의 게임 오브젝트가 여러 개의 스크립트를 가질 수 있다.
-    vector<CScript*> m_vecScript;
+    vector<CScript*>        m_vecScript;
 
     // 게임 오브젝트는 자식 게임 오브젝트를 벡터로 보유한다.
-    vector<CGameObject*> m_vecChild;
+    vector<CGameObject*>    m_vecChild;
 
-    CGameObject* m_Parent; // 부모 오브젝트와 자식 오브젝트가 서로 가리키는 구조
+    CGameObject*            m_Parent; // 부모 오브젝트와 자식 오브젝트가 서로 가리키는 구조
+
+    int                     m_iLayerIdx; // 현재 자신(오브젝트)이 소속된 레이어의 인덱스
 
 public:
     void begin();
@@ -48,6 +50,9 @@ public:
 
     // 부모 오브젝트와의 연결 끊기
     void DisconnectWithParent();
+    
+    // 현재 레이어와 연결 끊기
+    void DisconnectWithLayer();
 
     // 자식 오브젝트 추가
     void AddChild(CGameObject* _Child);
@@ -55,5 +60,8 @@ public:
 public:
     CGameObject();
     ~CGameObject();
+
+
+    friend class CLayer;
 };
 

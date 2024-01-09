@@ -44,6 +44,8 @@ typedef Vector4 Vec4;
 
 DEFINE LAYER_MAX = 32;
 
+DEFINE NOT_SELECTED = -1;
+
 #pragma endregion
 #pragma region _	enum class
 enum class ASSET_TYPE

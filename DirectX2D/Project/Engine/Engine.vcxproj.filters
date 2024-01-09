@@ -103,6 +103,9 @@
     <Filter Include="06. Asset\Texture">
       <UniqueIdentifier>{5d8a6e40-406b-4c34-a5b7-fc1a20580135}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\TaskMgr">
+      <UniqueIdentifier>{903b0c27-baa5-4464-8113-20b5deaa42c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -201,8 +204,16 @@
     <ClInclude Include="CCamera.h">
       <Filter>08. Component\08. Camera</Filter>
     </ClInclude>
-    <ClInclude Include="CCameraMoveScript.h" />
-    <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CTaskMgr.h">
+      <Filter>04. Manager\TaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CCameraMoveScript.h">
+      <Filter>09. Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>06. Asset\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissileScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -280,11 +291,22 @@
     <ClCompile Include="CCamera.cpp">
       <Filter>08. Component\08. Camera</Filter>
     </ClCompile>
-    <ClCompile Include="CCameraMoveScript.cpp" />
     <ClCompile Include="extern.cpp">
       <Filter>01. Header</Filter>
     </ClCompile>
-    <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="Func.cpp">
+      <Filter>01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskMgr.cpp">
+      <Filter>04. Manager\TaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCameraMoveScript.cpp">
+      <Filter>09. Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>06. Asset\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissileScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

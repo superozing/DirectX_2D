@@ -86,7 +86,7 @@ void CLevelMgr::init()
 
 
 	// 레벨에 추가
-	m_CurLevel->AddObject(pObj, 0);
+	m_CurLevel->AddObject(pObj, 0, false);
 }
 
 void CLevelMgr::tick()
@@ -94,6 +94,10 @@ void CLevelMgr::tick()
 	if (nullptr == m_CurLevel)
 		return;
 
+	// 이전 프레임에 등록했던 오브젝트 초기화
+	m_CurLevel->clear();
+
+	// 이후 새로 레벨에서 등록
 	m_CurLevel->tick();
 	m_CurLevel->finaltick();
 }
